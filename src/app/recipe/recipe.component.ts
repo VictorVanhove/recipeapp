@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
+  name: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    this.name = 'spaghetti';
   }
 
+  ngOnInit() {}
 }
