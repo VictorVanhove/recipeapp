@@ -10,7 +10,8 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit() {}
 
-  addRecipe(recipeName: HTMLInputElement) {
+  addRecipe(recipeName: HTMLInputElement): boolean {
     console.log(recipeName.value);
+    return false;
   }
 }
