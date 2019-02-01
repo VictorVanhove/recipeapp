@@ -4,19 +4,35 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatIconModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatListModule,
+  MatCardModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IngredientComponent } from './ingredient/ingredient.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 @NgModule({
-  declarations: [AppComponent, RecipeComponent, IngredientComponent],
+  declarations: [
+    AppComponent,
+    RecipeComponent,
+    IngredientComponent,
+    AddRecipeComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    MatButtonModule,
+    MatInputModule,
     MatListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
