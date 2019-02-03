@@ -5,6 +5,11 @@ export class Recipe {
     private _dateAdded = new Date()
   ) {}
 
+  static fromJSON(json: any): Recipe {
+    const rec = new Recipe(json.name, json.ingredients, json.dateAdded);
+    return rec;
+  }
+
   get name(): string {
     return this._name;
   }
