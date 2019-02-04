@@ -16,13 +16,15 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeFilterPipe } from './recipe-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeComponent,
     IngredientComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    RecipeFilterPipe
   ],
   imports: [
     BrowserModule,
