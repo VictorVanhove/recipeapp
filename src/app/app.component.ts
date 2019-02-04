@@ -9,7 +9,11 @@ import { Recipe } from './recipe.model';
 })
 export class AppComponent {
   constructor(private _recipeDataService: RecipeDataService) {}
+  public filterRecipeName: string;
 
+  applyFilter(filter: string) {
+    this.filterRecipeName = filter;
+  }
   get recipes(): Recipe[] {
     return this._recipeDataService.recipes;
   }
