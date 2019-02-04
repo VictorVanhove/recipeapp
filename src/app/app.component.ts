@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RECIPES } from './mock-recipes';
+import { Recipe } from './recipe.model';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,8 @@ import { RECIPES } from './mock-recipes';
 export class AppComponent {
   recipes = RECIPES;
   constructor() {}
+
+  addNewRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+  }
 }
