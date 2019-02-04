@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatListModule,
+  MatGridListModule,
   MatCardModule,
   MatIconModule,
   MatFormFieldModule,
@@ -30,6 +31,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     MatButtonModule,
     MatInputModule,
     MatListModule,
+    MatGridListModule,
     MatCardModule,
     MatIconModule,
     MatFormFieldModule
