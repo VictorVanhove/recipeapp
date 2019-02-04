@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RECIPES } from './mock-recipes';
+import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
 
 @Component({
@@ -8,10 +8,13 @@ import { Recipe } from './recipe.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  recipes = RECIPES;
-  constructor() {}
+  constructor(private _recipeDataService: RecipeDataService) {}
 
-  addNewRecipe(recipe: Recipe) {
-    this.recipes.push(recipe);
+  get recipes(): Recipe[] {
+    return this._recipeDataService.recipes;
+  }
+
+  addNewRecipe(recipe) {
+    this._recipeDataService.addNewRecipe(recipe);
   }
 }
