@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
 import { Subject } from 'rxjs';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,13 @@ export class AppComponent {
   public filterRecipe$ = new Subject<string>();
 
   constructor(private _recipeDataService: RecipeDataService) {
-    this.filterRecipe$.subscribe(val => (this.filterRecipeName = val));
+    this.filterRecipe$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(400),
+        map(val => val.toLowerCase())
+      )
+      .subscribe(val => (this.filterRecipeName = val));
   }
 
   get recipes(): Recipe[] {
