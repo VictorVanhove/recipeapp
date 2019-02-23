@@ -17,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeFilterPipe } from './recipe-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RecipeFilterPipe } from './recipe-filter.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
     MatButtonModule,
     MatInputModule,
     MatListModule,
