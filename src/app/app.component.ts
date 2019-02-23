@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,13 @@ import { Recipe } from './recipe.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private _recipeDataService: RecipeDataService) {}
   public filterRecipeName: string;
+  public filterRecipe$ = new Subject<string>();
 
-  applyFilter(filter: string) {
-    this.filterRecipeName = filter;
+  constructor(private _recipeDataService: RecipeDataService) {
+    this.filterRecipe$.subscribe(val => (this.filterRecipeName = val));
   }
+
   get recipes(): Recipe[] {
     return this._recipeDataService.recipes;
   }
