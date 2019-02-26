@@ -10,9 +10,9 @@
   <mat-card-content>
     <h3 mat-subheader>ingredients</h3>
     <mat-list>
-      <mat-list-item *ngFor="let ingredient of ingredients">{{
-        ingredient
-      }}</mat-list-item>
+      <mat-list-item *ngFor="let ingredient of ingredients">
+        <app-ingredient [name]="ingredient"></app-ingredient>
+      </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>

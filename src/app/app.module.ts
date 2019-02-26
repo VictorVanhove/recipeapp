@@ -6,9 +6,10 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatCardModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { IngredientComponent } from './ingredient/ingredient.component';
 
 @NgModule({
-  declarations: [AppComponent, RecipeComponent],
+  declarations: [AppComponent, RecipeComponent, IngredientComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
