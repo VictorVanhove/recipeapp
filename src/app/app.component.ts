@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
-import { Subject } from 'rxjs';
-import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import {
+  distinctUntilChanged,
+  debounceTime,
+  map,
+  switchMap,
+  share
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +18,9 @@ import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 export class AppComponent {
   public filterRecipeName: string;
   public filterRecipe$ = new Subject<string>();
+
+  private _fetchRecipes$: Observable<Recipe[]> = this._recipeDataService
+    .recipes$;
 
   constructor(private _recipeDataService: RecipeDataService) {
     this.filterRecipe$
@@ -23,8 +32,8 @@ export class AppComponent {
       .subscribe(val => (this.filterRecipeName = val));
   }
 
-  get recipes(): Recipe[] {
-    return this._recipeDataService.recipes;
+  get recipes() {
+    return this._fetchRecipes$;
   }
 
   addNewRecipe(recipe) {
