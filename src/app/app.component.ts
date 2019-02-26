@@ -37,6 +37,6 @@ export class AppComponent {
   }
 
   addNewRecipe(recipe) {
-    this._recipeDataService.addNewRecipe(recipe);
+    this._recipeDataService.addNewRecipe(recipe).subscribe();
   }
 }

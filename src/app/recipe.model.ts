@@ -15,7 +15,13 @@ export class Recipe {
     );
     return rec;
   }
-
+  toJSON(): any {
+    return {
+      name: this.name,
+      ingredients: this.ingredients.map(ing => ing.toJSON()),
+      created: this.dateAdded
+    };
+  }
   get name(): string {
     return this._name;
   }

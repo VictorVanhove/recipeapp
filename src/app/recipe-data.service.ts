@@ -19,5 +19,7 @@ export class RecipeDataService {
     );
   }
 
-  addNewRecipe(recipe: Recipe) {}
+  addNewRecipe(recipe: Recipe) {
+    return this.http.post(`${environment.apiUrl}/recipes/`, recipe.toJSON());
+  }
 }

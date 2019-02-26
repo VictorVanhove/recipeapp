@@ -10,6 +10,10 @@ export class Ingredient {
     return ing;
   }
 
+  toJSON(): any {
+    return { name: this.name, amount: this.amount, unit: this.unit };
+  }
+
   get name() {
     return this._name;
   }
