@@ -32,7 +32,7 @@ export class AppComponent {
       .subscribe(val => (this.filterRecipeName = val));
   }
 
-  get recipes() {
+  get recipes$() {
     return this._fetchRecipes$;
   }
 
