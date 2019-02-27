@@ -11,7 +11,8 @@
       />
     </mat-form-field>
   </mat-card>
-  <div *ngIf="(recipes$ | async) as recipes; else loading">
+
+  <div *ngIf="(recipes$ | async) as recipes; else loadingOrError">
     <div
       fxLayout="row wrap"
       fxLayout.xs="column"
@@ -28,5 +29,13 @@
       </div>
     </div>
   </div>
-  <ng-template #loading>Loading recipes...</ng-template>
+  <ng-template #loadingOrError>
+    <div *ngIf="(loadingError$ | async) as errorMessage; else loading">
+      Error loading the recipe list: {{ errorMessage }}. <br />Please try again
+      later.
+    </div>
+    <ng-template #loading>
+      Loading recipes...
+    </ng-template>
+  </ng-template>
 </div>
