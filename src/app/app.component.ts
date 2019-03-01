@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
-import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, combineLatest } from 'rxjs';
 import {
   distinctUntilChanged,
   debounceTime,
@@ -19,8 +19,10 @@ export class AppComponent {
   public filterRecipeName: string;
   public filterRecipe$ = new Subject<string>();
 
-  private _fetchRecipes$: Observable<Recipe[]> = this._recipeDataService
-    .recipes$;
+  private _refreshRecipes$ = new BehaviorSubject(true);
+  private _fetchRecipes$: Observable<Recipe[]> = this._refreshRecipes$.pipe(
+    switchMap(() => this._recipeDataService.recipes$)
+  );
   public loadingError$ = this._recipeDataService.loadingError$;
 
   constructor(private _recipeDataService: RecipeDataService) {
@@ -38,6 +40,8 @@ export class AppComponent {
   }
 
   addNewRecipe(recipe) {
-    this._recipeDataService.addNewRecipe(recipe).subscribe();
+    this._recipeDataService
+      .addNewRecipe(recipe)
+      .subscribe(() => this._refreshRecipes$.next(true));
   }
 }
