@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RECIPES } from './mock-recipes';
 import { Recipe } from './recipe.model';
 import { Observable, Subject, of } from 'rxjs';
-import { map, share, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,8 +20,7 @@ export class RecipeDataService {
         this.loadingError$.next(error.statusText);
         return of();
       }),
-      map((list: any[]): Recipe[] => list.map(Recipe.fromJSON)),
-      share()
+      map((list: any[]): Recipe[] => list.map(Recipe.fromJSON))
     );
   }
 
