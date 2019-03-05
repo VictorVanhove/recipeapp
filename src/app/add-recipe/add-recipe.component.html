@@ -11,11 +11,9 @@
           formControlName="name"
         />
         <mat-error
-          *ngIf="
-            recipe.get('name').errors?.required && recipe.get('name').touched
-          "
+          *ngIf="recipe.get('name').errors && recipe.get('name').touched"
         >
-          name is required
+          {{ getErrorMessage(recipe.get('name').errors) }}
         </mat-error>
       </mat-form-field>
       <button type="submit" mat-raised-button>
@@ -25,3 +23,4 @@
   </mat-card-content>
 </mat-card>
 REMOVE {{ recipe.value | json }}
+{{ recipe.get('name').errors | json }}
