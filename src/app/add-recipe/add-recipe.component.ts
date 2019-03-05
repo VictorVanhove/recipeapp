@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-recipe',
@@ -8,13 +9,14 @@ import { Recipe } from '../recipe.model';
 })
 export class AddRecipeComponent implements OnInit {
   @Output() public newRecipe = new EventEmitter<Recipe>();
-  constructor() {}
+  private recipe: FormGroup;
 
-  ngOnInit() {}
-
-  addRecipe(recipeName: HTMLInputElement): boolean {
-    const recipe = new Recipe(recipeName.value, []);
-    this.newRecipe.emit(recipe);
-    return false;
+  ngOnInit() {
+    this.recipe = new FormGroup({
+      name: new FormControl('risotto')
+    });
+  }
+  onSubmit() {
+    this.newRecipe.emit(new Recipe(this.recipe.value.name));
   }
 }
