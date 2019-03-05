@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeDataService } from './recipe-data.service';
 import { Recipe } from './recipe.model';
-import { BehaviorSubject, Subject, Observable, combineLatest } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 import {
   distinctUntilChanged,
   debounceTime,

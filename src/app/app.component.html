@@ -30,12 +30,14 @@
     </div>
   </div>
   <ng-template #loadingOrError>
-    <div *ngIf="(loadingError$ | async) as errorMessage; else loading">
-      Error loading the recipe list: {{ errorMessage }}. <br />Please try again
-      later.
-    </div>
-    <ng-template #loading>
-      Loading recipes...
-    </ng-template>
+    <mat-card>
+      <mat-error *ngIf="(loadingError$ | async) as errorMessage; else loading">
+        Error loading the recipe list: {{ errorMessage }}. <br />Please try
+        again later.
+      </mat-error>
+      <ng-template #loading>
+        Loading recipes...
+      </ng-template>
+    </mat-card>
   </ng-template>
 </div>
