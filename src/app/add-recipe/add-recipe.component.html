@@ -10,6 +10,13 @@
           type="text"
           formControlName="name"
         />
+        <mat-error
+          *ngIf="
+            recipe.get('name').errors?.required && recipe.get('name').touched
+          "
+        >
+          name is required
+        </mat-error>
       </mat-form-field>
       <button type="submit" mat-raised-button>
         add
