@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-recipe',
@@ -13,7 +13,10 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipe = new FormGroup({
-      name: new FormControl('risotto')
+      name: new FormControl('risotto', [
+        Validators.required,
+        Validators.minLength(2)
+      ])
     });
   }
   onSubmit() {
