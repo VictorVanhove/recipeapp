@@ -9,6 +9,7 @@
           placeholder="name"
           type="text"
           formControlName="name"
+          required
         />
         <mat-error
           *ngIf="recipe.get('name').errors && recipe.get('name').touched"
@@ -16,11 +17,46 @@
           {{ getErrorMessage(recipe.get('name').errors) }}
         </mat-error>
       </mat-form-field>
+      <div
+        formArrayName="ingredients"
+        *ngFor="let item of ingredients.controls; let i = index"
+      >
+        <div [formGroupName]="i">
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              aria-label="ingredient amount"
+              placeholder="amount"
+              formControlName="amount"
+          /></mat-form-field>
+          <mat-form-field>
+            <mat-select
+              placeholder="unit"
+              aria-label="ingredient unit"
+              formControlName="unit"
+            >
+              <mat-option *ngFor="let type of unitTypes" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="name"
+              aria-label="ingredient name"
+              type="text"
+              formControlName="name"
+            />
+          </mat-form-field>
+        </div>
+      </div>
       <button type="submit" mat-raised-button>
         add
       </button>
     </form>
   </mat-card-content>
 </mat-card>
-REMOVE {{ recipe.value | json }}
-{{ recipe.get('name').errors | json }}
+<!-- REMOVE {{ recipe.get('ingredients') | json }} -->
+<!-- {{ recipe.get('name').errors | json }} -->

@@ -11,7 +11,9 @@ import {
   MatCardModule,
   MatIconModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IngredientComponent } from './ingredient/ingredient.component';
@@ -36,6 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatListModule,
+    MatOptionModule,
+    MatSelectModule,
     MatGridListModule,
     MatCardModule,
     MatIconModule,
